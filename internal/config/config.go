@@ -81,6 +81,13 @@ func SetAgent(dir, role, agent string) error {
 	return fmt.Errorf("role '%s' not found in config. Available roles are in the Consilium table", role)
 }
 
+// ConfigFilePath returns the absolute path of the project config file found
+// in dir (CLAUDE.md, .cursorrules, .windsurfrules), or an empty string when
+// none exists. This is the exported counterpart of the internal findConfigFile.
+func ConfigFilePath(dir string) string {
+	return findConfigFile(dir)
+}
+
 func findConfigFile(dir string) string {
 	candidates := []string{
 		"CLAUDE.md",
